@@ -1,0 +1,22 @@
+{
+  "name": "xcrypt-algo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koombi/xcrypt-algo.git"
+  },
+  "author": "koombi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koombi/xcrypt-algo/issues"
+  },
+  "homepage": "https://github.com/koombi/xcrypt-algo#readme",
+  "dependencies": {
+    "crypto-js": "^4.0.0"
+  }
+}
