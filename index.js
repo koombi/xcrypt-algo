@@ -1,15 +1,31 @@
-const CryptoJS = require("crypto-js");
+const Xcrypter = require("./Xcrypter");
 
-// master key
-const masterKey = "ASECRET";
-const passwordInputted = "PASSWORD";
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-// (en)crypt
-var cipher = CryptoJS.AES.encrypt(passwordInputted, masterKey);
-cipher = cipher.toString();
-console.log(cipher);
+readline.question('Enter your master key? ', (masterKey) => {
+  const xcrypter = new Xcrypter(masterKey);
 
-// (de)crypt
-var decipher = CryptoJS.AES.decrypt(cipher, masterKey);
-decipher = decipher.toString(CryptoJS.enc.Utf8);
-console.log(decipher);
+  readline.question(`Encrypt (1) Or Decrypt (2)? `, (choice) => {
+    if (choice === "1") {
+      readline.question(`Password? `, (password) => {
+        console.log(xcrypter.encrypt(password));
+        readline.close();
+      });
+      return;
+    }
+
+    if (choice === "2") {
+      readline.question(`Encrypted string? `, (cipher) => {
+        console.log(xcrypter.decrypt(cipher));
+        readline.close();
+      });
+      return;
+    }
+
+    console.log("Wrong choice!");
+    readline.close();
+  });
+});
